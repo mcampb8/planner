@@ -1,6 +1,6 @@
 var todayDate = dayjs().format("dddd, MMMM DD");
 document.getElementById("currentDay").textContent = todayDate;
-
+//function to save text input to local storage in corresponding time-block
 $(function () {
   $(".saveBtn").on("click", function(){
     var thisHour = $(this).parent().attr("id");
@@ -9,7 +9,7 @@ $(function () {
      var userInput = textArea.val();
      localStorage.setItem(thisHour, userInput);
   });
-
+// function to change the time-block class to past, present, or future, depending on current time
   $(".time-block").each(function(){
     var hourID = $(this).attr("id");
     var parsedHour = parseInt(hourID.split("-")[1]);
@@ -22,7 +22,7 @@ $(function () {
       $(this).addClass("present");
     }
   })
-
+// getting the value of whatever data is in local storage for each hour
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10 .description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
